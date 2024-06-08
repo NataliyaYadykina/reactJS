@@ -1,0 +1,6 @@
+.card_wrap {
+    border: 1px solid #333;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px 80px;
+}
