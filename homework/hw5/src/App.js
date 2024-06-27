@@ -11,22 +11,22 @@ Component: Создайте компонент, который отобража�
 Интерфейс: Ваш интерфейс может состоять из переключателя, который изменяет тему с светлой на темную и обратно.
 */
 
-import React from "react";
-import "./App.css";
-import ThemeSwitcher from "./components/ThemeSwitcher";
-import { useSelector } from "react-redux";
+import React from 'react';
+import './App.css';
+import ToggleTheme from './ToggleTheme';
 
-function App() {
-  const theme = useSelector((state) => state.theme); // Получаем текущую тему из Redux
-
+const App = () => {
   return (
-    <div className={`App ${theme}-theme`}>
-      {" "}
-      <header className="App-header">
-        <ThemeSwitcher />
+    <div className={`app ${document.body.classList.contains('dark-mode') ? 'dark-mode' : ''}`}>
+      <header className="app-header">
+        <h1>Theme Switcher</h1>
+        <ToggleTheme />
       </header>
+      <div className="app-content">
+        <p>This is some sample content.</p>
+      </div>
     </div>
   );
-}
+};
 
 export default App;

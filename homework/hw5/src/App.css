@@ -38,19 +38,99 @@
   }
 }
 
-.light-theme {
-  background-color: #fff;
-  color: #000;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+  /* анимация смены цветов */
 }
 
-.dark-theme {
+.app {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+  /* анимация смены цветов */
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.app-content {
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+  /* анимация смены цветов */
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:checked+.slider:before {
+  transform: translateX(26px);
+}
+
+.dark-mode {
   background-color: #333;
   color: #fff;
 }
 
-.theme-switcher-btn {
-  padding: 10px 20px;
-  font-size: 1rem;
-  margin: 20px;
-  cursor: pointer;
+.dark-mode .app {
+  background-color: #444;
+}
+
+.dark-mode .app-content {
+  background-color: #555;
+}
+
+.dark-mode .app-header {
+  background-color: #222;
 }
