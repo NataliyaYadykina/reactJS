@@ -24,14 +24,6 @@ const Order = () => {
         navigate('/catalog');
     };
 
-    const calculateTotalPrice = () => {
-        let totalPrice = 0;
-        cartItems.forEach(item => {
-            totalPrice += item.price * item.quantity;
-        });
-        return totalPrice.toFixed(2);
-    };
-
     return (
         <div className="cart__left">
             {cartItems.length === 0 ? (
@@ -78,9 +70,6 @@ const Order = () => {
             <div className="cart__buttons">
                 <a href="#" className="cart__button" onClick={handleClearCart}>CLEAR SHOPPING CART</a>
                 <a href="#" className="cart__button" onClick={handleContinueShopping}>CONTINUE SHOPPING</a>
-            </div>
-            <div className="cart__total_price">
-                Total: ${calculateTotalPrice()}
             </div>
         </div>
     );
