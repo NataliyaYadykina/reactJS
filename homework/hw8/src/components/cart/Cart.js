@@ -4,7 +4,7 @@ import OrderInfo from './OrderInfo';
 
 const Cart = () => {
     return (
-        <section class="cart center">
+        <section className="cart center">
             <Order />
             <OrderInfo />
         </section>

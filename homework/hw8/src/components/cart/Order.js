@@ -3,10 +3,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, updateQuantity, clearCart } from '../../store';
 import { useNavigate } from 'react-router-dom';
 
+// Функция для импорта всех изображений из папки /img
+function importAll(r) {
+    let images = {};
+    r.keys().map((item, index) => {
+        // Убираем начальные ./ из пути к изображениям
+        const imagePath = item.replace('./', '');
+        images[imagePath] = r(item);
+    });
+    return images;
+}
+
+// Импортируем все изображения из папки /img
+const images = importAll(require.context('../../img', false, /\.(png|jpe?g|svg)$/));
+
 const Order = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartItems = useSelector(state => state.cart.items);
+
+    // Преобразуем данные о продуктах, добавляя ссылку на изображение к каждому продукту
+    const products = cartItems.map(product => ({
+        ...product,
+        imgcart: images[product.imgcart] // Подставляем путь к изображению из импортированных
+    }));
 
     const handleRemoveFromCart = (productId) => {
         dispatch(removeFromCart(productId));
@@ -26,11 +46,11 @@ const Order = () => {
 
     return (
         <div className="cart__left">
-            {cartItems.length === 0 ? (
+            {products.length === 0 ? (
                 <p>No products</p>
             ) : (
                 <div className="cart__product_cards">
-                    {cartItems.map(item => (
+                    {products.map(item => (
                         <article key={item.id} className="cart__product_card">
                             <svg onClick={() => handleRemoveFromCart(item.id)} className="cart__product_card__remove_products_icon" width="18" height="18" viewBox="0 0 18 18"
                                 fill="none" xmlns="http://www.w3.org/2000/svg">
