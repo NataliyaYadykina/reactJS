@@ -1084,7 +1084,6 @@ body {
 .products__pagination svg {
   min-width: 8px;
   cursor: pointer;
-  padding-top: 6px;
 }
 
 .products__pagination svg:hover path {

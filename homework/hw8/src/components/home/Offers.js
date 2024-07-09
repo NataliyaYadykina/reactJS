@@ -1,5 +1,6 @@
 import React from 'react';
 import offersData from '../../data/Offers.json'; // импортируем данные из JSON файла
+import { Link } from 'react-router-dom';
 
 const Offers = () => {
     // Преобразуем объект с предложениями из JSON в массив объектов
@@ -13,14 +14,14 @@ const Offers = () => {
         <section className="offer center">
             {offersArray.map((offer, index) => (
                 <div key={index + 1} className={`offer__item ${offer.title === 'ACCESORIES' ? 'offer__item-bottom' : `offer__item-${index + 1}`}`}>
-                    <a href={offer.link} className="offer__item__link">
+                    <Link to={offer.link} className="offer__item__link">
                         <p className="offer__item__subtitle">
                             {offer.describe}
                         </p>
                         <h4 className="offer__item__title">
                             {offer.title}
                         </h4>
-                    </a>
+                    </Link>
                 </div>
             ))}
         </section>

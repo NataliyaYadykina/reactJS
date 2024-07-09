@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store';
+import { Link } from 'react-router-dom';
 
 const Product = ({ product }) => {
     const dispatch = useDispatch();
@@ -31,7 +32,7 @@ const Product = ({ product }) => {
                     </a>
                 </div>
             </div>
-            <a href="/product" className="products__item__text-wrap">
+            <Link to="/product" className="products__item__text-wrap">
                 <h3 className="products__item__title">
                     {product.title}
                 </h3>
@@ -41,7 +42,7 @@ const Product = ({ product }) => {
                 <p className="products__item__price">
                     ${product.price.toFixed(2)}
                 </p>
-            </a>
+            </Link>
         </article>
     );
 };
